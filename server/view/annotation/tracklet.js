@@ -303,7 +303,7 @@ function auto_predict() {
 	$('#predict-next-frame').attr('disabled', $('#auto-predict').prop('checked'));
 }
 
-function predict_next_frame(current_frame_index) {
+async function predict_next_frame(current_frame_index) {
 	if (annotation.images.length === current_frame_index ||
 		!(annotation.info.type === undefined || annotation.info.type === 'video')) {
 		return;
@@ -350,7 +350,7 @@ function predict_next_frame(current_frame_index) {
 		'algorithm': $('input:radio[name="prediction_algorithm"]:checked').val(),
 	};
 
-	$.ajax({
+	const response = await $.ajax({
 		url: 'predict_next_frame.php',
 		type: 'POST',
 		dataType: 'json',

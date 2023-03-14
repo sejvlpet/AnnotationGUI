@@ -12,7 +12,12 @@ label_name = sys.argv[4]
 label_location = sys.argv[5]
 
 os.makedirs(os.path.join(project_dir, project_name))
+# os.system(f"sudo mkdir {os.path.join(project_dir, project_name)}")
+
+
 os.makedirs(os.path.join(project_dir, project_name, 'images'))
+# os.system(f"sudo mkdir {os.path.join(project_dir, project_name, 'images')}")
+
 
 #
 # Image

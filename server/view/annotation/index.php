@@ -56,10 +56,10 @@
 	</a>
 
 	<span class="navbar-text ml-auto" style="margin-right: 1%;">
-		<small>Annotation results are automatically saved.</small>
+		<small>Anotace se ukládají automaticky (Annotation results are automatically saved)</small>
 	</span>
 	<button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#shortcut-dialog">?</button>
-	<a type="button" class="btn btn-secondary btn-sm" href="../../" style="margin-left: 1%;">Back to Menu</a>
+	<a type="button" class="btn btn-secondary btn-sm" href="../../" style="margin-left: 1%;">Zpět do menu (Back to Menu)</a>
 </nav>
 
 <div class="container-fluid" style="width: 100%; height: 95%;">
@@ -73,34 +73,36 @@
 				</div>
 			</figure>
 
-			<div style="padding-top: 5%;" class="video-control" hidden>
-				<button class="btn btn-secondary btn-block require-selection" id="delete-at-current-frame" disabled onclick="delete_at_current_frame();" style="padding: 0px;">
+			<div style="padding-top: 5%;" class="video-control" >
+				<button hidden class="btn btn-secondary btn-block require-selection" id="delete-at-current-frame" disabled onclick="delete_at_current_frame();" style="padding: 0px;">
 					<div class="button-text">Delete track at current frame</div></button>
 				<button class="btn btn-secondary btn-block require-selection" id="delete-in-subsequent-frames" disabled onclick="delete_in_subsequent_frames();" style="padding: 0px;">
-					<div class="button-text">Delete tracks in subsequent frames</div></button>
+					<div class="button-text">Ukončit track - již se neobjeví v dalších snímcích <br> (End tracklet - it will not be in any consecutive frames)</div></button>
 				<button class="btn btn-secondary btn-block require-selection" id="delete-whole" disabled data-toggle="modal" data-target="#delete-dialog" style="padding: 0px;">
-					<div class="button-text">Delete whole tracklet</div></button>
-				<button class="btn btn-secondary btn-block require-selection" onclick="begin_link_tracklet();" id="link-tracklet" disabled style="padding: 0px;">
+					<div class="button-text">Odstranit celý track - i z předchozích snímků <br> (Remove entire tracklet - will be removed even in previous frames)</div></button>
+				<button class="btn btn-secondary btn-block require-selection" onclick="begin_link_tracklet();" id="link-tracklet" disabled style="padding: 0px;" hidden>
 					<div class="button-text">Link tracklets</div></button>
 				<button class="btn btn-primary btn-block" onclick="end_link_tracklet();" hidden id="end-link-tracklet" style="padding: 0px;">
-					<div class="button-text">End Link tracklets</div></button>
+					<div class="button-text" hidden>End Link tracklets</div></button>
 				<button class="btn btn-secondary btn-block require-selection" id="cut-tracklet" disabled onclick="cut_tracklet();" style="padding: 0px;">
-					<div class="button-text">Cut tracklet at current frame</div></button>
-				<button class="btn btn-secondary btn-block" onclick="predict_next_frame(frame_index);" id="predict-next-frame">
-					Predict Next Frame</button>
+					<div class="button-text" hidden>Cut tracklet at current frame</div></button>
+				<button class="btn btn-secondary btn-block" onclick="predict_next_frame(frame_index);" id="predict-next-frame" hidden>
+					Predikovat do dalšího snímku <br> (Predict position in the next frame)</button>
 				<div class="custom-control custom-switch">
-					<input type="checkbox" class="custom-control-input" id="auto-predict" onchange="auto_predict();">
-					<label class="custom-control-label" for="auto-predict" title="Automatically run next frame prediction when image is changed.">Auto Predict</label>
-				</div>
+						<input type="checkbox" class="custom-control-input" id="auto-predict" onchange="auto_predict();" checked>
+						<label class="custom-control-label" for="auto-predict" title="Automatically run next frame prediction when image is changed.">Automaticky predikovat (Auto Predict)</label>
+					</div>
 
-				<div class="custom-control custom-radio custom-control-inline">
-					<input type="radio" id="homography" value="homography" name="prediction_algorithm" class="custom-control-input" checked>
-					<label class="custom-control-label" for="homography">Homography</label>
-				</div>
-				<div class="custom-control custom-radio custom-control-inline">
-					<input type="radio" id="csrt" value="csrt" name="prediction_algorithm" class="custom-control-input">
-					<label class="custom-control-label" for="csrt">CSRT</label>
-				</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="csrt" value="csrt" name="prediction_algorithm" class="custom-control-input" checked>
+						<label class="custom-control-label" for="csrt">CSRT</label>
+					</div>
+
+					<!-- <div class="custom-control custom-radio custom-control-inline" hidden>
+						<input type="radio" id="homography" value="homography" name="prediction_algorithm" class="custom-control-input" >
+						<label class="custom-control-label" for="homography">Homography</label>
+					</div> -->
+
 			</div>
 
 			<div style="padding-top: 5%;" class="image-control" hidden>
@@ -141,20 +143,20 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="label-dialog">Category and Attribution</h5>
+				<h5 class="modal-title" id="label-dialog">Kategorie a atributy <br> (Category and Attribution)</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="selecting_new_category = false;">
 				<span aria-hidden="true">&times;</span></button>
 			</div>
 			<div class="modal-body row">
 				<div class="col-6">
-					<h6>Category</h6>
+					<h6>Kategorire (Category)</h6>
 					<select class="custom-select" size="10" id="category-selection">
 					</select>
 					<hr>
-					<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-label-dialog">Add New</button>
+					<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-label-dialog" hidden>Přidat nový (Add New)</button>
 				</div>
 				<div class="col-6">
-					<h6>Attribution</h6>
+					<h6>Atributy (Attribution)</h6>
 					<div id="attribution-selection">
 						<template id="attribution-template">
 							<div class="custom-control custom-switch">
@@ -165,21 +167,21 @@
 					</div>
 
 					<br>
-					<div class="text-left video-control" hidden>
-						<h6>Apply to</h6>
+					<div class="text-left video-control">
+						<h6>Aplikovat na (Apply to)</h6>
 						<div class="form-check">
-							<input type="radio" class="form-check-input" name="attr-apply" id="attr-this" checked>
-							<label class="form-check-label" for="attr-this">This frame</label>
+							<input type="radio" class="form-check-input" name="attr-apply"  id="attr-subsequent" checked>
+							<label class="form-check-label" for="attr-subsequent">Následující snímky (Subsequent frames)</label>
 						</div>
 
 						<div class="form-check">
-							<input type="radio" class="form-check-input" name="attr-apply"  id="attr-subsequent">
-							<label class="form-check-label" for="attr-subsequent">Subsequent frames</label>
+							<input type="radio" class="form-check-input" name="attr-apply" id="attr-this">
+							<label class="form-check-label" for="attr-this">Tento snímek (This frame)</label>
 						</div>
 
 						<div class="form-check">
 							<input type="radio" class="form-check-input" name="attr-apply"  id="attr-whole">
-							<label class="form-check-label" for="attr-whole">Whole tracklet</label>
+							<label class="form-check-label" for="attr-whole">Celý track (Whole tracklet)</label>
 						</div>
 					</div>
 				</div>
@@ -219,12 +221,12 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="delete-dialog">Delete Whole Tracklet</h5>
+				<h5 class="modal-title" id="delete-dialog">Odstranit celý track (Delete Whole Tracklet)</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span></button>
 			</div>
 			<div class="modal-body">
-				Are you sure want to delete the whole tracklet?
+				Jste si jisti, že chce odstranit celý track? <br> (Are you sure want to delete the whole tracklet?)
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -259,6 +261,8 @@
 	const canvas_thumb = $('#canvas-thumb')[0];
 
 	var frame_index = 1;
+	let predictionRunning = false;
+
 
 	const anti_alias = 1;
 	const ctx_main = canvas_main.getContext('2d');
@@ -269,6 +273,7 @@
 	canvas_main.height = window.innerHeight * anti_alias;
 	canvas_draw.width = window.innerWidth * anti_alias;
 	canvas_draw.height = window.innerHeight * anti_alias;
+
 
 	$(window).resize(function () { 
 		canvas_main.width = window.innerWidth * anti_alias;
@@ -365,15 +370,34 @@
 	//
 	// Drawing
 	//
-	function updateFrameIndex(new_index) {
+	async function updateFrameIndex(new_index) {
 		if (($("#label-dialog").data('bs.modal') || {})._isShown || making_box || selecting_new_category) {
 			return;
 		}
 
+		// lock keyboard during the waiting for prediction
+		$(document).on('keydown.predict', function(e) {
+            e.preventDefault();
+        });
+
 		if ($('#auto-predict').prop('checked') && frame_index + 1 === new_index) {
-			// If auto predict is enabled, predict next frame
-			predict_next_frame(frame_index);
-		}
+	        predictionRunning = true; // set flag to true before prediction
+	        $(document).on('keydown.predict', function(e) {
+	            if (predictionRunning) {
+	                e.preventDefault();
+	                return;
+	            }
+	        });
+
+	        try {
+	            await predict_next_frame(frame_index);
+	        } catch (error) {
+	            console.log(error);
+	        } finally {
+	            predictionRunning = false; // set flag to false after prediction
+	            $(document).off('keydown.predict');
+	        }
+    	}
 
 		frame_index = Math.max(Math.min(new_index, annotation.images.length), 1);
 
@@ -742,9 +766,9 @@
 		updateFrameIndex(1);
 
 		document.addEventListener('keydown', (event) => {
-			if (event.key == 'ArrowLeft' || event.key == 'a') {
+			if (event.key == 'ArrowLeft' || event.key == 'a' || event.key == 'A') {
 				updateFrameIndex(frame_index - 1);
-			} else if (event.key == 'ArrowRight' || event.key == 'd') {
+			} else if (event.key == 'ArrowRight' || event.key == 'd' || event.key == 'D') {
 				updateFrameIndex(frame_index + 1);			
 			} else if (event.key == 'Delete') {
 				delete_at_current_frame();

@@ -122,12 +122,12 @@ function drawTracklets(annotation, selected_box, hovered_box, hovered_cp, no_lin
 			ctx.strokeStyle = tracklet_colors[annot.tracklet_id];
 			ctx.fillStyle = tracklet_colors[annot.tracklet_id];
 			if (!no_link_list.includes(annot.tracklet_id)) {
-				ctx.globalAlpha = annot.id == selected_box || annot.id == hovered_box ? 0.5 : 0.25;
+				ctx.globalAlpha = annot.id == selected_box || annot.id == hovered_box ? 1 : 0.65;
 			}
-			ctx.fillRect(x1 * canvas.width, y1 * canvas.height, (x2 - x1) * canvas.width, (y2 - y1) * canvas.height);
-			if (!no_link_list.includes(annot.tracklet_id)) {
-				ctx.globalAlpha = 1.0;
-			}
+			// ctx.fillRect(x1 * canvas.width, y1 * canvas.height, (x2 - x1) * canvas.width, (y2 - y1) * canvas.height);
+			// if (!no_link_list.includes(annot.tracklet_id)) {
+			// 	ctx.globalAlpha = 1.0;
+			// }
 			ctx.strokeRect(x1 * canvas.width, y1 * canvas.height, (x2 - x1) * canvas.width, (y2 - y1) * canvas.height);
 			if (annot.id == selected_box) {
 				ctx.strokeRect(x1 * canvas.width - 3, y1 * canvas.height - 3, 

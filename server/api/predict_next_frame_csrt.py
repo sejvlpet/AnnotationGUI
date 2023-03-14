@@ -8,7 +8,7 @@ OPENCV_OBJECT_TRACKERS = {
 #	"boosting": cv2.TrackerBoosting_create,
 	"mil": cv2.legacy.TrackerMIL_create,
 #	"tld": cv2.TrackerTLD_create,
-#	"medianflow": cv2.TrackerMedianFlow_create,
+	# "medianflow": cv2.TrackerMedianFlow_create,
 #	"mosse": cv2.TrackerMOSSE_create,
 }
 
