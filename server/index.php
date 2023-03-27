@@ -120,7 +120,7 @@
 					<div class="row">
 						<a href="" type="button" class="btn btn-block btn-primary go-annotation" style="width:100%;">Go Annotation</a>
 						<a href="" type="button" class="btn btn-block btn-secondary download-annotation" style="width:60%;" download="">Download</a>
-						<button class="btn btn-block btn-dark delete-project" style="width:40%;" data-toggle="modal" data-target="#delete-project-dialog" data-name="">Delete</button>
+						<button class="btn btn-block btn-dark delete-project" style="width:40%;" data-toggle="modal" data-target="#delete-project-dialog" data-name="" hidden>Delete</button>
 					</div>
 					<p class="card-text">
 						<span class="video-filename">Video filename</span><br>
