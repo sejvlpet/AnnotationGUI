@@ -90,7 +90,7 @@
 		<!-- Left Pane -->
 		<div style="width:20%; padding-right: 1%; height: 100%;">
 			<figure class="figure d-none d-sm-block">
-				<div class="insideWrapper">
+				<div class="insideWrapper" style="height: 25%"; >
 					<img src="" class="overedImage" id="thumb-image" style="max-width: 100%; height: auto;">
 					<canvas class="coveringCanvas" id="canvas-thumb"></canvas>
 				</div>
