@@ -3,22 +3,22 @@
 	
 
 	// authentication code -----------------------------------------------
-	$valid_passwords = array ("user_name" => "user_pass");
-	$valid_users = array_keys($valid_passwords);
+	// $valid_passwords = array ("user_name" => "user_pass");
+	// $valid_users = array_keys($valid_passwords);
 
-	$user = $_SERVER['PHP_AUTH_USER'];
-	$pass = $_SERVER['PHP_AUTH_PW'];
+	// $user = $_SERVER['PHP_AUTH_USER'];
+	// $pass = $_SERVER['PHP_AUTH_PW'];
 
-	$validated = (in_array($user, $valid_users)) && ($pass == $valid_passwords[$user]);
+	// $validated = (in_array($user, $valid_users)) && ($pass == $valid_passwords[$user]);
 
-	if (!$validated) {
-	  header('WWW-Authenticate: Basic realm="My Realm"');
-	  header('HTTP/1.0 401 Unauthorized');
-	  die ("Not authorized");
-	}
+	// if (!$validated) {
+	//   header('WWW-Authenticate: Basic realm="My Realm"');
+	//   header('HTTP/1.0 401 Unauthorized');
+	//   die ("Not authorized");
+	// }
 
-	// If arrives here, is a valid user.
-	echo "<p>Vítejte (Welcome) $user.</p>";
+	// // If arrives here, is a valid user.
+	// echo "<p>Vítejte (Welcome) $user.</p>";
 	// authentication code end ----------------------------------------------
 
 
